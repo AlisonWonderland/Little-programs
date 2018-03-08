@@ -7,6 +7,8 @@ using namespace std;
 void parseFile(string filename, vector<string>&);
 void printMenu(vector<string>&);
 void printParsedWords(vector<string>&);
+void a2zSort(vector<string>&);
+void z2zSort(vector<string>&);
 
 int main() {
    string filename;
@@ -17,6 +19,8 @@ int main() {
       cin >> filename;
       
       parseFile(filename, parsedWords);
+      
+      cout << endl;
    
       printMenu(parsedWords);
       
@@ -49,20 +53,26 @@ void parseFile(string filename, vector<string>& parsedWords) {
 void printMenu(vector<string>& parsedWords) {
    while(1) {
       char userInput;
+      
       cout << "Enter a number to execute a command." << endl;
       cout << "1 - Print all parsed words" << endl;
       cout << "2 - Sort parsed words in alphabetical order" << endl;
       cout << "3 - Sort parsed words from z-a" << endl;
       cout << "'q' / 'Q' - Exit out of program" << endl;
       
+      cout << "Enter input: ";
+      cin >> userInput;
+      cout << endl;
+      
       if(userInput == '1') {
          printParsedWords(parsedWords);
+         cout << endl;
       }
       else if(userInput == '2') {
-         
+         a2zSort(parsedWords);
       }
       else if(userInput == '3') {
-         
+         z2zSort(parsedWords);
       }
       else if(userInput == 'q') {
          return;
@@ -80,4 +90,28 @@ void printParsedWords(vector<string>& parsedWords) {
    }
    
    return;
+}
+
+void a2zSort(vector<string>& parsedWords) {
+   for (int i = 0; i < parsedWords.size() - 1; i++) {
+      for (int j = 0; j < parsedWords.size() - i - 1; j++) {
+         if (parsedWords.at(j) > parsedWords.at(j + 1)) {
+           string temp = parsedWords.at(j);
+           parsedWords.at(j) = parsedWords.at(j + 1);
+           parsedWords.at(j + 1) = temp;
+         }
+      }
+   }         
+}
+
+void z2zSort(vector<string>& parsedWords) {
+   for (int i = 0; i < parsedWords.size() - 1; i++) {
+      for (int j = 0; j < parsedWords.size() - i - 1; j++) {
+         if (parsedWords.at(j) < parsedWords.at(j + 1)) {
+           string temp = parsedWords.at(j);
+           parsedWords.at(j) = parsedWords.at(j + 1);
+           parsedWords.at(j + 1) = temp;
+         }
+      }
+   }         
 }
