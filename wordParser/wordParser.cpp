@@ -46,30 +46,31 @@ void parseFile(string filename, vector<string>& parsedWords) {
    return;
 }
 
-void printMenu() {
-   char userInput;
-   cout << "Enter a number to execute a command." << endl;
-   cout << "1 - Print all parsed words" << endl;
-   cout << "2 - Sort parsed words in alphabetical order" << endl;
-   cout << "3 - Sort parsed words from z-a" << endl;
-   cout << "'q' / 'Q' - Exit out of program" << endl;
-   
-   if(userInput == '1') {
+void printMenu(vector<string>& parsedWords) {
+   while(1) {
+      char userInput;
+      cout << "Enter a number to execute a command." << endl;
+      cout << "1 - Print all parsed words" << endl;
+      cout << "2 - Sort parsed words in alphabetical order" << endl;
+      cout << "3 - Sort parsed words from z-a" << endl;
+      cout << "'q' / 'Q' - Exit out of program" << endl;
       
+      if(userInput == '1') {
+         printParsedWords(parsedWords);
+      }
+      else if(userInput == '2') {
+         
+      }
+      else if(userInput == '3') {
+         
+      }
+      else if(userInput == 'q') {
+         return;
+      }
+      else {
+         cout << "Invalid Input!" << endl;
+      }
    }
-   else if(userInput == '2') {
-      
-   }
-   else if(userInput == '3') {
-      
-   }
-   else if(userInput == '4') {
-      
-   }
-   else {
-      cout << "Invalid Input!" << endl;
-   }
-   
    return;
 }
 
